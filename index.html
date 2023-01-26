@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="pencet">tambah user</button>
+
+    <h1>Namaku adalah</h1>
+    <div id="users"></div>
+
+    <script>
+        const pencet = document.getElementById('pencet')
+        const users = document.getElementById('users')
+        const data = JSON.parse(localStorage.getItem('users'), 'utf-8')
+
+        if (!data) {
+            localStorage.setItem('users', JSON.stringify(['arrizal']))
+        }
+
+
+        pencet.addEventListener('click', (e) => {
+            e.preventDefault()
+            data.push('orang lain')
+            users.innerHTML = ''
+            localStorage.setItem('users', JSON.stringify(data))
+            renderData(data)
+        })
+
+        console.log(data)
+        function renderData(data) {
+            data.forEach(el => {
+                const p = document.createElement('p')
+                p.innerText = el
+                users.appendChild(p)
+            })
+        }
+        renderData(data)
+    </script>
+</body>
+
+</html>
