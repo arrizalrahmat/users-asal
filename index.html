@@ -17,10 +17,13 @@
     <script>
         const pencet = document.getElementById('pencet')
         const users = document.getElementById('users')
-        const data = JSON.parse(localStorage.getItem('users'), 'utf-8')
+        let data
+        if (window) {
+            data = JSON.parse(localStorage.getItem('users'), 'utf-8')
 
-        if (!data) {
-            localStorage.setItem('users', JSON.stringify(['arrizal']))
+            if (!data) {
+                localStorage.setItem('users', JSON.stringify(['arrizal']))
+            }
         }
 
 
